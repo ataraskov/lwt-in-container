@@ -1,0 +1,12 @@
+Fix below error:
+----------
+Fatal Error: DB connect error (MySQL not running or connection parameters are wrong; start MySQL and/or correct file "connect.inc.php"). Please read the documentation [Error Code: 2002 / Error Message: No such file or directory]
+
+Backtrace:
+
+#0 /var/www/html/utilities.inc.php(3371): my_die('DB connect erro...')
+#1 /var/www/html/index.php(46): require_once('/var/www/html/u...')
+----------
+
+It's reported on startup via docker compose.
+Make sure that Dockerfile follows https://hapepo23.github.io/lwt/LWT_INSTALLATION.txt instructions for Linux.

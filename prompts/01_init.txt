@@ -1,0 +1,7 @@
+Check https://github.com/HugoFara/lwt/blob/f3ee876bedd8bd74a278f5ba4567eb99e5184c9b/Dockerfile
+Check https://sourceforge.net/projects/learning-with-texts/
+1) Create a Dockerfile to wrap https://sourceforge.net/projects/learning-with-texts/ into a container.
+   1.1) lwt distribution should be downloaded automatically from sourceforge during docker build
+   1.2) container should provide all lwt's dependencies, excluding database
+2) Prepare an example docker-compose.yml file (check https://github.com/HugoFara/lwt-docker-installer/blob/main/docker-compose.yml for reference)
+3) Create GitHub workflow to build and publish resulting container

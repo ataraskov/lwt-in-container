@@ -37,7 +37,7 @@ The CI pipeline publishes a multi-arch image (amd64 + arm64) to the GitHub Conta
 ```yaml
 services:
   lwt:
-    image: ghcr.io/<your-github-username>/lwt-in-container:latest
+    image: ghcr.io/ataraskov/lwt-in-container:latest
 ```
 
 ## Data persistence

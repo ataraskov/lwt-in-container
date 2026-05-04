@@ -1,0 +1,37 @@
+services:
+  lwt:
+    image: ghcr.io/ataraskov/lwt-in-container:latest
+    ports:
+      - "${WEB_PORT:-8080}:80"
+    environment:
+      DB_SERVER: lwt_db
+      DB_USER: ${DB_USER:-lwt}
+      DB_PASSWORD: ${DB_PASSWORD:-lwt_secret}
+      DB_DATABASE: ${DB_DATABASE:-learning_with_texts}
+      APP_DEBUG: true
+    volumes:
+      - lwt_media:/var/www/html/media
+    depends_on:
+      lwt_db:
+        condition: service_healthy
+    restart: unless-stopped
+
+  lwt_db:
+    image: mariadb:11
+    environment:
+      MARIADB_DATABASE: ${DB_DATABASE:-learning_with_texts}
+      MARIADB_USER: ${DB_USER:-lwt}
+      MARIADB_PASSWORD: ${DB_PASSWORD:-lwt_secret}
+      MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-root_secret}
+    volumes:
+      - lwt_db_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    restart: unless-stopped
+
+volumes:
+  lwt_media:
+  lwt_db_data:
