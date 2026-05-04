@@ -8,7 +8,6 @@ services:
       DB_USER: ${DB_USER:-lwt}
       DB_PASSWORD: ${DB_PASSWORD:-lwt_secret}
       DB_DATABASE: ${DB_DATABASE:-learning_with_texts}
-      APP_DEBUG: true
     volumes:
       - lwt_media:/var/www/html/media
     depends_on:
@@ -17,7 +16,7 @@ services:
     restart: unless-stopped
 
   lwt_db:
-    image: mariadb:11
+    image: mariadb:12
     environment:
       MARIADB_DATABASE: ${DB_DATABASE:-learning_with_texts}
       MARIADB_USER: ${DB_USER:-lwt}
