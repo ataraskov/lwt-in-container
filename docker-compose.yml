@@ -4,7 +4,7 @@ services:
     ports:
       - "${WEB_PORT:-8080}:80"
     environment:
-      DB_SERVER: lwt_db
+      DB_HOST: lwt_db
       DB_USER: ${DB_USER:-lwt}
       DB_PASSWORD: ${DB_PASSWORD:-lwt_secret}
       DB_DATABASE: ${DB_DATABASE:-learning_with_texts}
